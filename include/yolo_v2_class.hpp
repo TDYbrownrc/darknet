@@ -87,6 +87,9 @@ public:
     LIB_API int get_net_height() const;
     LIB_API int get_net_color_depth() const;
 
+    //returns a copy of layer 138 output
+    LIB_API float *get_current_layer138_output();
+
     LIB_API std::vector<bbox_t> tracking_id(std::vector<bbox_t> cur_bbox_vec, bool const change_history = true,
                                                 int const frames_story = 5, int const max_dist = 40);
 
