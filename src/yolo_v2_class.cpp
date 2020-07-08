@@ -182,8 +182,6 @@ LIB_API Detector::~Detector()
     detector_gpu_t &detector_gpu = *static_cast<detector_gpu_t *>(detector_gpu_ptr.get());
     //layer l = detector_gpu.net.layers[detector_gpu.net.n - 1];
 
-    free(current_layer138_output);
-
     free(detector_gpu.track_id);
 
     free(detector_gpu.avg);

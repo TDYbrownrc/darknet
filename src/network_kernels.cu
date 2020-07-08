@@ -673,8 +673,8 @@ float *get_network_output_gpu(network net)
     int i;
     for(i = net.n-1; i > 0; --i) if(net.layers[i].type != COST) break;
 
-    #highest resolution conv layer before yolo head
-    get_network_output_gpu_layer(net, 138)
+    //highest resolution conv layer before yolo head
+    get_network_output_gpu_layer(net, 138);
 
     return get_network_output_layer_gpu(net, i);
 }
