@@ -266,6 +266,21 @@ LIB_API void Detector::free_image(image_t m)
     }
 }
 
+LIB_API float* Detector::get_current_layer138_output(int& channels, int& rows, int& cols)
+{
+    detector_gpu_t &detector_gpu = *static_cast<detector_gpu_t *>(detector_gpu_ptr.get());
+    network &net = detector_gpu.net;
+
+    layer l_138 = net.layers[138];
+    float* current_layer138_output = new float[l_138.outputs];
+    channels = l_138.out_c;
+    rows = l_138.out_h;
+    cols = l_138.out_w;
+
+    memcpy(current_layer138_output, l_138.output,l_138.outputs*sizeof(float));
+    return current_layer138_output;
+}
+
 LIB_API std::vector<bbox_t> Detector::detect(image_t img, float thresh, bool use_mean)
 {
     detector_gpu_t &detector_gpu = *static_cast<detector_gpu_t *>(detector_gpu_ptr.get());
